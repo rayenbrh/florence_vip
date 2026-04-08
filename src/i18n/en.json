@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "residence": "The Residence",
+    "gallery": "Gallery",
+    "rooms": "Rooms",
+    "location": "Location",
+    "cta": "Request Access",
+    "langSwitchToIT": "Switch to Italian",
+    "langSwitchToEN": "Switch to English"
+  },
+  "hero": {
+    "eyebrow": "Florence, Italy",
+    "layer1a": "Where the city",
+    "layer1b": "becomes",
+    "layer1em": "your home.",
+    "layer1sub": "Private residences above the rooftops of Florence",
+    "layer2a": "Every window.",
+    "layer2b": "A living",
+    "layer2em": "painting.",
+    "layer2sub": "The Duomo. The Ponte Vecchio. The Arno.",
+    "layer3a": "Five residences.",
+    "layer3b": "One eternal",
+    "layer3em": "city.",
+    "cta": "Discover the Collection",
+    "ctaNote": "Private inquiries welcome · Concierge included",
+    "scroll": "Scroll",
+    "statSqm": "sqm",
+    "statBedrooms": "Bedrooms",
+    "statGuests": "Guests"
+  },
+  "loading": {
+    "tagline": "Private residences · Florence, Italy",
+    "preparing": "Preparing your experience",
+    "welcome": "Welcome to Florence"
+  },
+  "about": {
+    "eyebrow": "The Residence",
+    "titleLine": "A 200 sqm sanctuary",
+    "titleEm": "above Florence.",
+    "p1": "Discover a charming 200 sqm residence, recently renovated, in the heart of the city. Three designer bedrooms with perfect soundproofing, three luxury bathrooms, and a panoramic terrace with views across the monuments of Florence.",
+    "p2": "The living room is entirely clad in fine Carrara marble, flooded with light through expansive glass panels. A sculptural fireplace creates an atmosphere of intimate elegance. Every window frames a city monument — transforming the view into a work of art that shifts with the light.",
+    "p3": "Surrounded by the flagship boutiques of Louis Vuitton, Gucci, Ferragamo, Valentino and Tiffany — this is Florence at its most prestigious.",
+    "cta": "Request Availability",
+    "statSqm": "sqm",
+    "statFloor": "Floor",
+    "statRating": "Rating"
+  },
+  "gallery": {
+    "eyebrow": "The Residence",
+    "titleLine1": "Every room,",
+    "titleEm": "a world.",
+    "subtitle": "Eight perspectives on life above Florence.",
+    "labels": [
+      "Palazzo Vecchio at sunset",
+      "The Palazzo Suite",
+      "Verde Alpi bathroom",
+      "The Dark Jewel kitchen",
+      "Rooftop attic living room",
+      "Black marble & gold",
+      "Sputnik chandelier",
+      "The dining room"
+    ]
+  },
+  "rooms": {
+    "eyebrow": "Accommodations",
+    "titleLine": "Three sanctuaries",
+    "titleEm": "of silence.",
+    "rooms": [
+      {
+        "name": "Master Suite",
+        "desc": "King bed with silk linens, en-suite marble bathroom with freestanding bath, direct terrace access."
+      },
+      {
+        "name": "Junior Suite",
+        "desc": "Queen bed (152×203cm), soundproofed walls, crystal sconces, views over the Florentine rooftops."
+      },
+      {
+        "name": "Classic Room",
+        "desc": "Queen bed, warm textured walls, designer furnishings, dedicated workspace with city-facing window."
+      }
+    ]
+  },
+  "location": {
+    "eyebrow": "Where We Are",
+    "title": "The most prestigious address in Florence.",
+    "body": "On the 4th floor of a historic palazzo in the most sought-after street of the Florentine centre — steps from the Uffizi, the Ponte Vecchio, and the Duomo. Walking distance to everything. Surrounded by the great names of Italian luxury.",
+    "imgLabel": "Florence, Tuscany, Italy",
+    "nearby": [
+      ["Brunelleschi Duomo", "4 min walk"],
+      ["Ponte Vecchio", "3 min walk"],
+      ["Uffizi Gallery", "5 min walk"],
+      ["Palazzo Vecchio", "4 min walk"],
+      ["Louis Vuitton · Gucci · Ferragamo", "Same street"]
+    ]
+  },
+  "footer": {
+    "eyebrow": "Begin Your Stay",
+    "titleLine": "Reserve your",
+    "titleEm": "Florence.",
+    "sub": "Private inquiries welcome. Each reservation is handled personally by Daniela and Andrea.",
+    "ctaPrimary": "Request Availability",
+    "ctaSecondary": "WhatsApp Us",
+    "hostRating": "5.0 · 100% response rate",
+    "hostNote": "Hosted by Daniela · Speaks English, Italian, Russian",
+    "legal": "Registration IT048017C2HY0VEZYK · Florence, Tuscany, Italy",
+    "legalExtra": "Check-in 3:00 PM – 7:00 PM · Check-out by 10:00 AM",
+    "airbnb": "Book on Airbnb"
+  },
+  "whatsapp": {
+    "tooltip": "Chat on WhatsApp",
+    "ariaLabel": "Contact us on WhatsApp",
+    "message": "Hello, I'd like to inquire about Florence VIP residences.",
+    "brand": "WhatsApp"
+  }
+}

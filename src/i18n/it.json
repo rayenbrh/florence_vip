@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "residence": "La Residenza",
+    "gallery": "Galleria",
+    "rooms": "Camere",
+    "location": "Posizione",
+    "cta": "Richiedi Accesso",
+    "langSwitchToIT": "Passa all'italiano",
+    "langSwitchToEN": "Switch to English"
+  },
+  "hero": {
+    "eyebrow": "Firenze, Italia",
+    "layer1a": "Dove la città",
+    "layer1b": "diventa",
+    "layer1em": "casa tua.",
+    "layer1sub": "Residenze private sopra i tetti di Firenze",
+    "layer2a": "Ogni finestra.",
+    "layer2b": "Un quadro",
+    "layer2em": "vivente.",
+    "layer2sub": "Il Duomo. Il Ponte Vecchio. L'Arno.",
+    "layer3a": "Cinque residenze.",
+    "layer3b": "Una città",
+    "layer3em": "eterna.",
+    "cta": "Scopri la Collezione",
+    "ctaNote": "Richieste private benvenute · Concierge incluso",
+    "scroll": "Scorri",
+    "statSqm": "mq",
+    "statBedrooms": "Camere",
+    "statGuests": "Ospiti"
+  },
+  "loading": {
+    "tagline": "Residenze private · Firenze, Italia",
+    "preparing": "Preparazione dell'esperienza",
+    "welcome": "Benvenuto a Firenze"
+  },
+  "about": {
+    "eyebrow": "La Residenza",
+    "titleLine": "Un santuario di 200 mq",
+    "titleEm": "sopra Firenze.",
+    "p1": "Scoprite una dimora di charme di 200 mq, recentemente rinnovata, nel cuore della città. Tre camere da letto di design con insonorizzazione perfetta, tre bagni di lusso e una terrazza panoramica con vista sui monumenti di Firenze.",
+    "p2": "Il salotto è interamente rivestito in pregiato marmo di Carrara, inondato di luce grazie alle ampie vetrate. Un camino scultoreo crea un'atmosfera di intima eleganza. Ogni finestra incornicia un monumento della città — trasformando la vista in un'opera d'arte.",
+    "p3": "Circondata dalle boutique di Louis Vuitton, Gucci, Ferragamo, Valentino e Tiffany — questa è Firenze nella sua massima espressione.",
+    "cta": "Richiedi Disponibilità",
+    "statSqm": "mq",
+    "statFloor": "Piano",
+    "statRating": "Valutazione"
+  },
+  "gallery": {
+    "eyebrow": "La Residenza",
+    "titleLine1": "Ogni stanza,",
+    "titleEm": "un mondo.",
+    "subtitle": "Otto prospettive sulla vita sopra Firenze.",
+    "labels": [
+      "Palazzo Vecchio al tramonto",
+      "La Suite Palazzo",
+      "Bagno in Verde Alpi",
+      "La cucina Dark Jewel",
+      "Soggiorno con travi a vista",
+      "Marmo nero e oro",
+      "Lampadario Sputnik",
+      "La sala da pranzo"
+    ]
+  },
+  "rooms": {
+    "eyebrow": "Alloggi",
+    "titleLine": "Tre santuari",
+    "titleEm": "di silenzio.",
+    "rooms": [
+      {
+        "name": "Suite Master",
+        "desc": "Letto king con biancheria in seta, bagno en-suite in marmo con vasca freestanding, accesso diretto alla terrazza."
+      },
+      {
+        "name": "Junior Suite",
+        "desc": "Letto matrimoniale (152×203 cm), pareti insonorizzate, applique in cristallo, vista sui tetti fiorentini."
+      },
+      {
+        "name": "Camera Classic",
+        "desc": "Letto matrimoniale, pareti strutturate calde, arredamento di design, scrivania con finestra sulla città."
+      }
+    ]
+  },
+  "location": {
+    "eyebrow": "Dove Siamo",
+    "title": "L'indirizzo più prestigioso di Firenze.",
+    "body": "Al 4° piano di un palazzo storico nella via più ambita del centro fiorentino — a pochi passi dagli Uffizi, dal Ponte Vecchio e dal Duomo. Tutto raggiungibile a piedi. Circondati dai grandi nomi del lusso italiano.",
+    "imgLabel": "Firenze, Toscana, Italia",
+    "nearby": [
+      ["Duomo del Brunelleschi", "4 min a piedi"],
+      ["Ponte Vecchio", "3 min a piedi"],
+      ["Galleria degli Uffizi", "5 min a piedi"],
+      ["Palazzo Vecchio", "4 min a piedi"],
+      ["Louis Vuitton · Gucci · Ferragamo", "Stessa via"]
+    ]
+  },
+  "footer": {
+    "eyebrow": "Inizia il Tuo Soggiorno",
+    "titleLine": "Prenota la tua",
+    "titleEm": "Firenze.",
+    "sub": "Richieste private benvenute. Ogni prenotazione è gestita personalmente da Daniela e Andrea.",
+    "ctaPrimary": "Richiedi Disponibilità",
+    "ctaSecondary": "Scrivici su WhatsApp",
+    "hostRating": "5.0 · 100% tasso di risposta",
+    "hostNote": "Ospitato da Daniela · Parla inglese, italiano e russo",
+    "legal": "Registrazione IT048017C2HY0VEZYK · Firenze, Toscana, Italia",
+    "legalExtra": "Check-in 15:00 – 19:00 · Check-out entro le 10:00",
+    "airbnb": "Prenota su Airbnb"
+  },
+  "whatsapp": {
+    "tooltip": "Chatta su WhatsApp",
+    "ariaLabel": "Contattaci su WhatsApp",
+    "message": "Salve, vorrei informazioni sulle residenze Florence VIP.",
+    "brand": "WhatsApp"
+  }
+}

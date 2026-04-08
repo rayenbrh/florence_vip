@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+*.local
+dev-dist
+
+# Assets lourds : deposer manuellement sur l’hebergeur (memes chemins public/…)
+public/images/*
+!public/images/.gitkeep
+public/frames/v1/*
+!public/frames/v1/.gitkeep
+/vid1.mp4
