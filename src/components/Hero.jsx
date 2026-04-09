@@ -13,11 +13,52 @@ export default function Hero() {
   const frames = useRef([])
   const loadedCount = useRef(0)
   const currentFrameIdx = useRef(0)
-  const rafRef = useRef(null)
+
+  const scrollProgressRef = useRef(0)
+  const layer1Ref = useRef(null)
+  const layer2Ref = useRef(null)
+  const layer3Ref = useRef(null)
+  const scrollIndRef = useRef(null)
+  const dot1Ref = useRef(null)
+  const dot2Ref = useRef(null)
+  const dot3Ref = useRef(null)
 
   const [loadProgress, setLoadProgress] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
+
+  const updateTextLayers = useCallback((p) => {
+    const l1 = p < 0.05 ? p / 0.05 : p < 0.2 ? 1 : p < 0.25 ? 1 - (p - 0.2) / 0.05 : 0
+    const l2 = p < 0.28 ? 0 : p < 0.33 ? (p - 0.28) / 0.05 : p < 0.5 ? 1 : p < 0.55 ? 1 - (p - 0.5) / 0.05 : 0
+    const l3 = p < 0.65 ? 0 : p < 0.72 ? (p - 0.65) / 0.07 : 1
+
+    const l1y = (1 - l1) * -28
+    const l3y = (1 - l3) * 22
+
+    if (layer1Ref.current) {
+      layer1Ref.current.style.opacity = l1
+      layer1Ref.current.style.transform = `translate(-50%, calc(-50% + ${l1y}px))`
+      layer1Ref.current.style.pointerEvents = l1 > 0.1 ? 'auto' : 'none'
+    }
+    if (layer2Ref.current) {
+      layer2Ref.current.style.opacity = l2
+      layer2Ref.current.style.pointerEvents = l2 > 0.1 ? 'auto' : 'none'
+    }
+    if (layer3Ref.current) {
+      layer3Ref.current.style.opacity = l3
+      layer3Ref.current.style.transform = `translate(-50%, calc(-50% + ${l3y}px))`
+      layer3Ref.current.style.pointerEvents = l3 > 0.1 ? 'auto' : 'none'
+    }
+    if (scrollIndRef.current) {
+      scrollIndRef.current.style.opacity = p < 0.06 ? 1 - p / 0.06 : 0
+    }
+
+    const active = l1 > 0.5 ? 0 : l2 > 0.5 ? 1 : 2
+    ;[dot1Ref, dot2Ref, dot3Ref].forEach((ref, i) => {
+      if (ref.current) {
+        ref.current.classList.toggle('meta-dot--on', i === active)
+      }
+    })
+  }, [])
 
   const drawFrame = useCallback((img) => {
     const canvas = canvasRef.current
@@ -73,47 +114,42 @@ export default function Hero() {
   }, [drawFrame])
 
   useEffect(() => {
-    const handleScroll = () => {
-      const hero = heroRef.current
-      if (!hero) return
-      const scrolled = -hero.getBoundingClientRect().top
-      const total = hero.offsetHeight - window.innerHeight
-      const progress = Math.max(0, Math.min(1, scrolled / total))
-      setScrollProgress(progress)
+    let rafId = null
+    let lastFrameIdx = -1
 
-      const idx = Math.round(progress * (TOTAL_FRAMES - 1))
-      if (idx !== currentFrameIdx.current) {
-        currentFrameIdx.current = idx
-        const frame = frames.current[idx]
-        if (frame?.complete) {
-          if (rafRef.current) cancelAnimationFrame(rafRef.current)
-          rafRef.current = requestAnimationFrame(() => drawFrame(frame))
+    const handleScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId)
+
+      rafId = requestAnimationFrame(() => {
+        const hero = heroRef.current
+        if (!hero) return
+
+        const scrolled = -hero.getBoundingClientRect().top
+        const total = hero.offsetHeight - window.innerHeight
+        const progress = Math.max(0, Math.min(1, scrolled / total))
+
+        scrollProgressRef.current = progress
+        updateTextLayers(progress)
+
+        const idx = Math.round(progress * (TOTAL_FRAMES - 1))
+        if (idx !== lastFrameIdx) {
+          lastFrameIdx = idx
+          currentFrameIdx.current = idx
+          const frame = frames.current[idx]
+          if (frame?.complete) {
+            drawFrame(frame)
+          }
         }
-      }
+      })
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      if (rafId) cancelAnimationFrame(rafId)
     }
-  }, [drawFrame])
-
-  const p = scrollProgress
-
-  const l1 = p < 0.2 ? 1 : p < 0.25 ? 1 - (p - 0.2) / 0.05 : 0
-  const l2 = p < 0.28 ? 0 : p < 0.33 ? (p - 0.28) / 0.05 : p < 0.5 ? 1 : p < 0.55 ? 1 - (p - 0.5) / 0.05 : 0
-  const l3 = p < 0.65 ? 0 : p < 0.72 ? (p - 0.65) / 0.07 : 1
-
-  const activeLayer = l1 > 0.5 ? 1 : l2 > 0.5 ? 2 : 3
-  const scrollIndicatorOpacity = p < 0.06 ? 1 - (p / 0.06) : 0
-
-  const layerStyle = (opacity, ty = 0) => ({
-    opacity,
-    ['--layer-ty']: `${ty}px`,
-    pointerEvents: opacity > 0.1 ? 'auto' : 'none',
-    willChange: 'opacity, transform',
-  })
+  }, [drawFrame, updateTextLayers])
 
   return (
     <>
@@ -127,7 +163,7 @@ export default function Hero() {
           <div className="hero-overlay" aria-hidden="true" />
           <div className="hero-grain" aria-hidden="true" />
 
-          <div className="hero-layer hero-layer--center" style={layerStyle(l1, (1 - l1) * -28)}>
+          <div ref={layer1Ref} className="hero-layer hero-layer--center" style={{ opacity: 0, pointerEvents: 'none' }}>
             <span className="eyebrow" aria-label={t('hero.eyebrow')}>{t('hero.eyebrow')}</span>
             <h1 className="hero-h1">
               {t('hero.layer1a')}<br />
@@ -144,7 +180,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hero-layer hero-layer--left" style={layerStyle(l2, l2 === 0 ? 20 : 0)}>
+          <div ref={layer2Ref} className="hero-layer hero-layer--left" style={{ opacity: 0, pointerEvents: 'none' }}>
             <h2 className="hero-h1 hero-h1--normal">
               {t('hero.layer2a')}<br />
               {t('hero.layer2b')}<br />
@@ -153,7 +189,7 @@ export default function Hero() {
             <p className="hero-sub hero-sub--gold">{t('hero.layer2sub')}</p>
           </div>
 
-          <div className="hero-layer hero-layer--center" style={layerStyle(l3, (1 - l3) * 22)}>
+          <div ref={layer3Ref} className="hero-layer hero-layer--center" style={{ opacity: 0, pointerEvents: 'none' }}>
             <h2 className="hero-h1">
               {t('hero.layer3a')}<br />
               {t('hero.layer3b')}<br />
@@ -163,7 +199,7 @@ export default function Hero() {
             <p className="hero-cta-note">{t('hero.ctaNote')}</p>
           </div>
 
-          <div className="scroll-ind" style={{ opacity: scrollIndicatorOpacity }} aria-hidden="true">
+          <div ref={scrollIndRef} className="scroll-ind" aria-hidden="true">
             <div className="scroll-line" />
             <span className="scroll-label">{t('hero.scroll')}</span>
           </div>
@@ -171,11 +207,11 @@ export default function Hero() {
           <div className="hero-meta" aria-hidden="true">
             <span className="meta-brand">◆ Florence VIP</span>
             <div className="meta-progress">
-              <span className={`meta-dot ${activeLayer === 1 ? 'meta-dot--on' : ''}`} />
+              <span ref={dot1Ref} className="meta-dot" />
               <span className="meta-line" />
-              <span className={`meta-dot ${activeLayer === 2 ? 'meta-dot--on' : ''}`} />
+              <span ref={dot2Ref} className="meta-dot" />
               <span className="meta-line" />
-              <span className={`meta-dot ${activeLayer === 3 ? 'meta-dot--on' : ''}`} />
+              <span ref={dot3Ref} className="meta-dot" />
             </div>
           </div>
 

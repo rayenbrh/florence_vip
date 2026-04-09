@@ -7,8 +7,20 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
-  const isIT = i18n.language?.startsWith('it')
-  const toggleLang = () => i18n.changeLanguage(isIT ? 'en' : 'it')
+  const lang = i18n.language?.slice(0, 2) ?? 'en'
+
+  const cycleLanguage = () => {
+    if (lang === 'en') i18n.changeLanguage('it')
+    else if (lang === 'it') i18n.changeLanguage('ru')
+    else i18n.changeLanguage('en')
+  }
+
+  const langLabel = lang === 'en' ? 'IT' : lang === 'it' ? 'RU' : 'EN'
+  const langAriaLabel = lang === 'en'
+    ? "Passa all'italiano"
+    : lang === 'it'
+      ? 'Switch to Russian'
+      : 'Switch to English'
 
   const closeMenu = useCallback(() => setMenuOpen(false), [])
   const toggleMenu = useCallback(() => setMenuOpen((o) => !o), [])
@@ -68,10 +80,10 @@ export default function Navbar() {
         <button
           type="button"
           className="lang-toggle nav-lang-desktop"
-          onClick={toggleLang}
-          aria-label={isIT ? t('nav.langSwitchToEN') : t('nav.langSwitchToIT')}
+          onClick={cycleLanguage}
+          aria-label={langAriaLabel}
         >
-          {isIT ? 'EN' : 'IT'}
+          {langLabel}
         </button>
 
         <a href="#contact" className="nav-cta">{t('nav.cta')}</a>
@@ -116,10 +128,10 @@ export default function Navbar() {
         <button
           type="button"
           className="lang-toggle nav-lang-mobile"
-          onClick={toggleLang}
-          aria-label={isIT ? t('nav.langSwitchToEN') : t('nav.langSwitchToIT')}
+          onClick={cycleLanguage}
+          aria-label={langAriaLabel}
         >
-          {isIT ? 'EN' : 'IT'}
+          {langLabel}
         </button>
         <a href="#contact" className="nav-drawer-cta" onClick={closeMenu}>{t('nav.cta')}</a>
       </div>

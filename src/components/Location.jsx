@@ -29,7 +29,7 @@ export default function Location() {
         </div>
         <div className="location-img">
           <img
-            src="/images/gallery-08.png"
+            src="/images/gallery-08.webp"
             alt=""
             loading="lazy"
           />

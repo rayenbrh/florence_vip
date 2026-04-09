@@ -23,10 +23,10 @@ export default function About() {
 
         <div className="about-right">
           <div className="about-img-main">
-            <img src="/images/about-01.png" alt="" loading="lazy" />
+            <img src="/images/about-01.webp" alt="" loading="lazy" />
           </div>
           <div className="about-img-secondary">
-            <img src="/images/about-02.png" alt="" loading="lazy" />
+            <img src="/images/about-02.webp" alt="" loading="lazy" />
           </div>
           <div className="about-facts">
             <div className="about-fact">

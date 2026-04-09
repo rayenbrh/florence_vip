@@ -5,9 +5,9 @@ export default function Rooms() {
   const { t } = useTranslation()
   const roomsData = t('rooms.rooms', { returnObjects: true })
   const ROOMS = [
-    { ...roomsData[0], num: '01', img: '/images/room-01.png' },
-    { ...roomsData[1], num: '02', img: '/images/room-02.png' },
-    { ...roomsData[2], num: '03', img: '/images/room-03.png' },
+    { ...roomsData[0], num: '01', img: '/images/room-01.webp' },
+    { ...roomsData[1], num: '02', img: '/images/room-02.webp' },
+    { ...roomsData[2], num: '03', img: '/images/room-03.webp' },
   ]
 
   return (
