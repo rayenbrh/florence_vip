@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import LoadingScreen from './LoadingScreen'
 import './Hero.css'
@@ -27,7 +27,8 @@ export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const updateTextLayers = useCallback((p) => {
-    const l1 = p < 0.05 ? p / 0.05 : p < 0.2 ? 1 : p < 0.25 ? 1 - (p - 0.2) / 0.05 : 0
+    // Calque 1 : visible dès le haut (p = 0), sans mini-scroll d’entrée
+    const l1 = p < 0.2 ? 1 : p < 0.25 ? 1 - (p - 0.2) / 0.05 : 0
     const l2 = p < 0.28 ? 0 : p < 0.33 ? (p - 0.28) / 0.05 : p < 0.5 ? 1 : p < 0.55 ? 1 - (p - 0.5) / 0.05 : 0
     const l3 = p < 0.65 ? 0 : p < 0.72 ? (p - 0.65) / 0.07 : 1
 
@@ -113,6 +114,11 @@ export default function Hero() {
     }
   }, [drawFrame])
 
+  // État calques à p=0 avant le premier paint — évite opacité 0 si progress était NaN (total===0 au 1er layout)
+  useLayoutEffect(() => {
+    updateTextLayers(0)
+  }, [updateTextLayers])
+
   useEffect(() => {
     let rafId = null
     let lastFrameIdx = -1
@@ -126,7 +132,8 @@ export default function Hero() {
 
         const scrolled = -hero.getBoundingClientRect().top
         const total = hero.offsetHeight - window.innerHeight
-        const progress = Math.max(0, Math.min(1, scrolled / total))
+        const progress =
+          total > 0 ? Math.max(0, Math.min(1, scrolled / total)) : 0
 
         scrollProgressRef.current = progress
         updateTextLayers(progress)
@@ -163,7 +170,7 @@ export default function Hero() {
           <div className="hero-overlay" aria-hidden="true" />
           <div className="hero-grain" aria-hidden="true" />
 
-          <div ref={layer1Ref} className="hero-layer hero-layer--center" style={{ opacity: 0, pointerEvents: 'none' }}>
+          <div ref={layer1Ref} className="hero-layer hero-layer--center" style={{ opacity: 1, pointerEvents: 'auto' }}>
             <span className="eyebrow" aria-label={t('hero.eyebrow')}>{t('hero.eyebrow')}</span>
             <h1 className="hero-h1">
               {t('hero.layer1a')}<br />
