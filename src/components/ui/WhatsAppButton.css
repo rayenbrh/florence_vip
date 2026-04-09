@@ -73,17 +73,24 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 1px solid var(--gold);
+  border: 1px solid rgba(61, 74, 62, 0.5);
   opacity: 0;
   animation: wa-pulse-ring 2.8s ease-out infinite;
 }
 
 @keyframes wa-pulse-ring {
-  0%   { transform: scale(1);    opacity: 0.6; }
+  0%   { transform: scale(1);    opacity: 0.45; }
   100% { transform: scale(1.7);  opacity: 0;   }
 }
 
+/* Deep forest green — #3D4A3E base, soft atmospheric glow same hue */
 .wa-btn {
+  --wa-bg:rgb(73, 99, 75);
+  --wa-bg-light: #4a584a;
+  --wa-bg-deep: #323b32;
+  --wa-glow: rgba(61, 74, 62, 0.16);
+  --wa-glow-wide: rgba(61, 74, 62, 0.08);
+
   position: relative;
   z-index: 1;
   display: flex;
@@ -95,12 +102,14 @@
   padding: 0 16px;
   border-radius: 50px;
 
-  background: var(--warm-black-soft);
-  border: 0.5px solid var(--gold);
+  background: linear-gradient(155deg, var(--wa-bg-light) 0%, var(--wa-bg) 48%, var(--wa-bg-deep) 100%);
+  border: 0.5px solid rgba(245, 240, 232, 0.16);
   box-shadow:
-    0 0 0 1px rgba(201, 169, 110, 0.08),
-    0 8px 32px rgba(0, 0, 0, 0.5),
-    0 2px 8px rgba(0, 0, 0, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.18),
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 0 52px 18px var(--wa-glow-wide),
+    0 0 88px 36px var(--wa-glow);
 
   text-decoration: none;
   overflow: hidden;
@@ -115,19 +124,34 @@
 
 .wa-btn:hover,
 .wa-btn--expanded {
-  background: var(--charcoal);
+  background: linear-gradient(155deg, #556456 0%, #455346 50%, #3a453b 100%);
   box-shadow:
-    0 0 0 1px rgba(201, 169, 110, 0.2),
-    0 12px 40px rgba(0, 0, 0, 0.6),
-    0 4px 12px rgba(0, 0, 0, 0.4);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(245, 240, 232, 0.1),
+    0 6px 28px rgba(0, 0, 0, 0.45),
+    0 0 64px 22px rgba(61, 74, 62, 0.12),
+    0 0 100px 42px rgba(61, 74, 62, 0.1);
   min-width: 160px;
 }
 
 .wa-link:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 2px var(--gold),
-    0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    0 0 0 2px rgba(245, 240, 232, 0.55),
+    0 0 0 4px rgba(61, 74, 62, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 0 52px 18px var(--wa-glow-wide),
+    0 0 88px 36px var(--wa-glow) !important;
+}
+
+.wa-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  flex-shrink: 0;
+  fill: #ffffff;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
 }
 
 .wa-label {
@@ -136,7 +160,8 @@
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: rgba(245, 240, 232, 0.92);
+  text-shadow: 0 1px 2px rgba(15, 14, 12, 0.25);
   max-width: 0;
   overflow: hidden;
   opacity: 0;
