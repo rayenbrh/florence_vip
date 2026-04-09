@@ -29,7 +29,7 @@ export default function Location() {
         </div>
         <div className="location-img">
           <img
-            src="/images/Gemini_Generated_Image_bdhyx5bdhyx5bdhy.png"
+            src="/images/gallery-08.png"
             alt=""
             loading="lazy"
           />

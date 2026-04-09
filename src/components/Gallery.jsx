@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next'
 import './Gallery.css'
 
 const IMAGES_BASE = [
-  { src: '/images/Gemini_Generated_Image_jkkjsjjkkjsjjkkj.png' },
-  { src: '/images/Gemini_Generated_Image_j8sd0qj8sd0qj8sd.png' },
-  { src: '/images/Gemini_Generated_Image_9vzr0o9vzr0o9vzr.png' },
-  { src: '/images/Gemini_Generated_Image_oqp5o2oqp5o2oqp5.png' },
-  { src: '/images/Gemini_Generated_Image_pt0n1cpt0n1cpt0n.png' },
-  { src: '/images/Gemini_Generated_Image_ra6kdgra6kdgra6k.png' },
-  { src: '/images/Gemini_Generated_Image_u6xkj4u6xkj4u6xk.png' },
-  { src: '/images/Gemini_Generated_Image_bdhyx5bdhyx5bdhy.png' },
+  { src: '/images/gallery-01.png' },
+  { src: '/images/gallery-02.png' },
+  { src: '/images/gallery-03.png' },
+  { src: '/images/gallery-04.png' },
+  { src: '/images/gallery-05.png' },
+  { src: '/images/gallery-06.png' },
+  { src: '/images/gallery-07.png' },
+  { src: '/images/gallery-08.png' },
 ]
 
 export default function Gallery() {
